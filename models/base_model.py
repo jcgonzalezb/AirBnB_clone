@@ -7,6 +7,7 @@ import models
 import uuid
 import datetime
 import time
+from models.engine.file_storage import FileStorage
 
 
 class BaseModel:
@@ -32,13 +33,14 @@ class BaseModel:
             be updated every time you change your object.
         """
         attributes = ['created_at', 'updated_at', 'id']
-                    
+
         if not kwargs:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
-            
-        else:    
+            models.storage.new(self)
+
+        else: 
             if kwargs is not None and not args:
                 for key, value in kwargs.items():
                     if key in attributes:
@@ -57,6 +59,7 @@ class BaseModel:
         datetime.
         """
         self.updated_at = datetime.datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """
