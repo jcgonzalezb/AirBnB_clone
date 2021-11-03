@@ -19,7 +19,7 @@ class BaseModel:
             __str__(self)
     """
 
-    def __init__(self, id=None, methodcreated_at=None, updated_at=None):
+    def __init__(self, *args, **kwargs):
         """
         Initialization function.
         If id is not None,
@@ -31,9 +31,18 @@ class BaseModel:
             datetime when an instance is created and it will
             be updated every time you change your object.
         """
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.datetime.now()
-        self.updated_at = datetime.datetime.now()
+        attributes = ['created_at', 'updated_at', 'id']
+                    
+        if not kwargs:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.datetime.now()
+            self.updated_at = datetime.datetime.now()
+            
+        else:    
+            if kwargs is not None and not args:
+                for key, value in kwargs.items():
+                    if key in attributes:
+                        setattr(self, key, value)
 
     def __str__(self):
         """
