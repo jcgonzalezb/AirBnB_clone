@@ -39,14 +39,14 @@ class BaseModel:
         """
         Function that prints [<class name>] (<self.id>) <self.__dict__>
         """
-        return "[{:s}] ({:s}) ({})".format(
+        return "[{:s}] ({:s}) {}".format(
             self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         """
         Updates the public instance attribute updated_at with the current
         datetime.
-                """
+        """
         self.updated_at = datetime.datetime.now()
 
     def to_dict(self):
@@ -54,16 +54,8 @@ class BaseModel:
         Dictionary containing all keys/values of __dict__ of the instance
         """
         instance_dict = self.__dict__
-        
+
         instance_dict['__class__'] = self.__class__.__name__
         instance_dict['created_at'] = self.created_at.isoformat()
         instance_dict['updated_at'] = self.updated_at.isoformat()
         return instance_dict
-        
-        #convert_dict = {'__class__': self.__class__.__name__,
-        #'created_at' : self.created_at.isoformat(),'updated_at': self.updated_at.isoformat()}
-        #return self.__dict__ | convert_dict
-
-        # return convert_dict
-        # return {'__class__': self.__class__.__name__, 'updated_at' :
-        # created_at.isoformat(), 'created_at' : created_at.isoformat()}
