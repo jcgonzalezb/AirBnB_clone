@@ -39,8 +39,8 @@ class BaseModel:
         """
         Function that prints [<class name>] (<self.id>) <self.__dict__>
         """
-        return "[{:s}] ({:s})".format(
-            self.__class__.__name__, self.id)
+        return "[{:s}] ({:s}) ({})".format(
+            self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         """
@@ -49,14 +49,20 @@ class BaseModel:
                 """
         self.updated_at = datetime.datetime.now()
 
-    # def to_dict(self):
+    def to_dict(self):
         """
-        xxxxxxxx
+        Dictionary containing all keys/values of __dict__ of the instance
         """
-        # return convert_dict = self.__dict__
-
-        # convert_dict = {'__class__': self.__class__.__name__,
-        #  self.updated_at.isoformat()}
+        instance_dict = self.__dict__
+        
+        instance_dict['__class__'] = self.__class__.__name__
+        instance_dict['created_at'] = self.created_at.isoformat()
+        instance_dict['updated_at'] = self.updated_at.isoformat()
+        return instance_dict
+        
+        #convert_dict = {'__class__': self.__class__.__name__,
+        #'created_at' : self.created_at.isoformat(),'updated_at': self.updated_at.isoformat()}
+        #return self.__dict__ | convert_dict
 
         # return convert_dict
         # return {'__class__': self.__class__.__name__, 'updated_at' :
