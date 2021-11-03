@@ -54,7 +54,5 @@ Class BaseModel:
 		
 		return {'__class__': self.__class__.__name__, self.updated_at.__dict__}
 
-		# return {'__class__': self.__class__.__name__, 'updated_at' : created_at.isoformat(), 'created_at' : created_at.isoformat()}
-
-
-
+		# return {'__class__': self.__class__.__name__, 'updated_at' :
+		# created_at.isoformat(), 'created_at' : created_at.isoformat()}
