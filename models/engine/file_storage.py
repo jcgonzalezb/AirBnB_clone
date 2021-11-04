@@ -33,17 +33,19 @@ class FileStorage:
 
         with open(self.__file_path, 'w', encoding='utf-8') as file:
             json.dump(dic, file)
+            
 
     def reload(self):
         """Deserializes the JSON file to __objects"""
         from models.base_model import BaseModel
         try:
-            with open(self.__file_path, 'r', encoding='utf-8') as file:
-                read = file.read()
-                dic = json.loads(read)
+            with open(self.__file_path, 'r') as file:
+                readed = file.read()
+                dic = json.loads(readed)
             
             for key, value in dic.items():
                 instance = eval(value['__class__'])(**value)
-                self.__object[key] = instance
-        except:
-            pass
+                self.__objects[key] = instance
+                
+        except Exception as e:
+            print('{}'.format(e))
