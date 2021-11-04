@@ -3,8 +3,9 @@
 Instance class FileStorage
 """
 
-import json
 
+import json
+import models
 
 class FileStorage:
     """
@@ -19,8 +20,10 @@ class FileStorage:
         return self.__objects
 
     def new(self, obj):
-        """Sets an obj"""
-        self.__objects['{}.{}'.format(obj.__class__name__, obj.id)] = obj
+        """Sets an obj with class name and id"""
+        
+        self.__objects['{}.{}'.format(type(obj).__name__, obj.id)] = obj
+        
 
     def save(self):
         """Serializes __objects (dict) to the JSON file"""
@@ -28,10 +31,19 @@ class FileStorage:
         for key, values in self.__objects.items():
             dic[key] = values.to_dict()
 
-        with open(self.__file_path, 'w') as file:
-            json.dump(dict, file)
+        with open(self.__file_path, 'w', encoding='utf-8') as file:
+            json.dump(dic, file)
 
     def reload(self):
         """Deserializes the JSON file to __objects"""
-        if self.__file_path is not None:
-            __objects = json.loads(self.__file_path)
+        from models.base_model import BaseModel
+        try:
+            with open(self.__file_path, 'r', encoding='utf-8') as file:
+                read = file.read()
+                dic = json.loads(read)
+            
+            for key, value in dic.items():
+                instance = eval(value['__class__'])(**value)
+                self.__object[key] = instance
+        except:
+            pass

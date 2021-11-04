@@ -3,11 +3,10 @@
 Write a class called BaseModel.
 """
 
-import models
 import uuid
 import datetime
 import time
-from models.engine.file_storage import FileStorage
+from models  import storage
 
 
 class BaseModel:
@@ -38,7 +37,8 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
-            models.storage.new(self)
+            storage.new(self)
+            
 
         else: 
             if kwargs is not None and not args:
@@ -59,7 +59,7 @@ class BaseModel:
         datetime.
         """
         self.updated_at = datetime.datetime.now()
-        models.storage.save()
+        storage.save()
 
     def to_dict(self):
         """
