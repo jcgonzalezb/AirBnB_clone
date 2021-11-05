@@ -2,6 +2,7 @@
 """Command line"""
 
 import cmd
+import shlex
 from models import storage
 from models.base_model import BaseModel
 
@@ -31,6 +32,7 @@ class HBNBCommand(cmd.Cmd):
             print('** class doesn\'t exist **')
         else:
             instance = eval(line)()
+            print("instancia - {}".format(instance))
             instance.save()
             print(instance.id)
 
@@ -114,7 +116,7 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, line):
         """Updates an instance based on the class name
         and id by adding or updating attribute"""
-        line_split = line.split(' ')
+        line_split = shlex.split(line)
         i = line.split()
         sto_object = storage.all()
         key = i[0] + '.' + i[1]
@@ -145,6 +147,10 @@ class HBNBCommand(cmd.Cmd):
             for value in sto_object.values():
                 if value.id == line_split[1]:
                     print('** value missing **')
+        
+        else:
+            setattr(sto_object[key], line_split[2], line_split[3])
+            storage.save()
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
