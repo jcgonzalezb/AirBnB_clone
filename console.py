@@ -95,5 +95,21 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
             return
 
+    def do_all(self, line):
+        """Prints all string representation of all instances
+        based or not on the class name"""
+        line_split = line.split(' ')
+        string_ins = []
+        sto_object = storage.all()
+
+        if line_split[0] not in HBNBCommand.classes:
+            print('** class doesn\'t exist **')
+            return
+
+        else:
+            for value in sto_object.values():
+                string_ins.append(value.__str__())
+            print("{}".format(string_ins))
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
