@@ -39,10 +39,12 @@ class HBNBCommand(cmd.Cmd):
         sto_object = storage.all() 
         line_split = line.split(' ')
         flag = True
-        #print("sto_object{}".format(sto_object))
-        print("line split [1]- {}".format(line_split[1]))
-        if len(line_split) == 0:
+        
+        if len(line) == 0:
             print('** class name missing **')
+            return
+        elif line_split[0] not in HBNBCommand.classes:
+            print('** class doesn\'t exist **')
             return
         elif len(line_split) == 1:
             print('** instance id missing **')
@@ -56,13 +58,9 @@ class HBNBCommand(cmd.Cmd):
                 print('** no instance found **')
                 return
         else:
-            instance = eval(line)()
-            instance.__str__()
-            print(instance)
-        #elif line_split not in HBNBCommand.classes:
-            #print('** class doesn\'t exist **')
-            #return
-        
+                instance = eval(line)()
+                instance.__str__()
+                print(instance)
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
