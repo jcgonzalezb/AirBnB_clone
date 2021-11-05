@@ -39,7 +39,7 @@ class HBNBCommand(cmd.Cmd):
         print(line)
         sto_object = storage.all() 
         line_split = line.split(' ')
-        flag = False
+        flag = True
 
         print("sto_object{}".format(sto_object))
         print("line split - {}".format(line_split))
@@ -54,7 +54,7 @@ class HBNBCommand(cmd.Cmd):
             for value in sto_object.values():
                 if value.id == line_split[1]:
                     print(value)
-            if flag is True:
+            if flag is False:
                 print('** no instance found **')
                 return
         else:
