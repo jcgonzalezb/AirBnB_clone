@@ -62,5 +62,17 @@ class HBNBCommand(cmd.Cmd):
                 instance.__str__()
                 print(instance)
 
+    def do_destroy(self, line):
+        """Deletes an instance based on the class name and id"""
+        sto_object = storage.all()
+        line_split = line.split(' ')
+        flag = True
+
+
+
+
+
+
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
