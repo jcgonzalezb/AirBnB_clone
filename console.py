@@ -36,13 +36,10 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self,line):
         """Show id and classname of instance."""
-        print(line)
         sto_object = storage.all() 
         line_split = line.split(' ')
         flag = True
-
-        print("sto_object{}".format(sto_object))
-        print("line split - {}".format(line_split))
+        #print("sto_object{}".format(sto_object))
         print("line split [1]- {}".format(line_split[1]))
         if len(line_split) == 0:
             print('** class name missing **')
@@ -54,7 +51,8 @@ class HBNBCommand(cmd.Cmd):
             for value in sto_object.values():
                 if value.id == line_split[1]:
                     print(value)
-            if flag is False:
+                    flag = False
+            if flag is True:
                 print('** no instance found **')
                 return
         else:
