@@ -36,6 +36,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self,line):
         """Show id and classname of instance."""
+        print(line)
         tokens = line.split    
         if len(line) == 0:
             print('** class name missing **')
@@ -53,7 +54,6 @@ class HBNBCommand(cmd.Cmd):
             instance = eval(line)()
             instance.__str__()
             print(instance)
-            
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
