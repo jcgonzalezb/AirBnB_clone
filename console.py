@@ -34,6 +34,7 @@ class HBNBCommand(cmd.Cmd):
             instance = eval(line)()
             print("instancia - {}".format(instance))
             instance.save()
+            print("instancia - {}".format(instance))
             print(instance.id)
 
     def do_show(self, line):
