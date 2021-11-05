@@ -39,7 +39,7 @@ class HBNBCommand(cmd.Cmd):
         print(line)
         sto_object = storage.all() 
         line_split = line.split(' ')
-        flag = True
+        flag = False
 
         print("sto_object{}".format(sto_object))
         print("line split - {}".format(line_split))
