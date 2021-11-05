@@ -34,12 +34,12 @@ class HBNBCommand(cmd.Cmd):
             instance.save()
             print(instance.id)
 
-    def do_show(self,line):
+    def do_show(self, line):
         """Show id and classname of instance."""
-        sto_object = storage.all() 
+        sto_object = storage.all()
         line_split = line.split(' ')
         flag = True
-        
+
         if len(line) == 0:
             print('** class name missing **')
             return
