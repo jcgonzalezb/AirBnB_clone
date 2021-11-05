@@ -111,5 +111,40 @@ class HBNBCommand(cmd.Cmd):
                 string_ins.append(value.__str__())
             print("{}".format(string_ins))
 
+    def do_update(self, line):
+        """Updates an instance based on the class name
+        and id by adding or updating attribute"""
+        line_split = line.split(' ')
+        i = line.split()
+        sto_object = storage.all()
+        key = i[0] + '.' + i[1]
+        print(type(line))
+
+        if len(line) == 0:
+            print('** class name missing **')
+            return
+
+        elif line_split[0] not in HBNBCommand.classes:
+            print('** class doesn\'t exist **')
+            return
+
+        elif len(line_split) == 1:
+            print('** instance id missing **')
+            return
+
+        elif key not in sto_object.keys():
+            print('** no instance found **')
+            return
+        
+        elif len(line_split) == 2:
+            for value in sto_object.values():
+                if value.id == line_split[1]:
+                    print('** attribute name missing **')
+
+        elif len(line_split) == 3:
+            for value in sto_object.values():
+                if value.id == line_split[1]:
+                    print('** value missing **')
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
