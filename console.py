@@ -2,15 +2,18 @@
 """Command line"""
 
 import cmd
+from shlex import split
 import shlex
+import models
 from models import storage
 from models.base_model import BaseModel
-
 
 class HBNBCommand(cmd.Cmd):
     """class HBNBCommand defines the command interpreter."""
     prompt = '(hbnb) '
     classes = {"BaseModel"}
+
+    instance = []
 
     def do_quit(self, line):
         """Command to exit the program."""
