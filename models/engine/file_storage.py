@@ -8,6 +8,7 @@ import models
 import json
 import os
 
+
 class FileStorage:
     """
     That serializes instances to a JSON file and
@@ -43,7 +44,7 @@ class FileStorage:
         from models.city import City
         from models.amenity import Amenity
         from models.review import Review
-        
+
         if os.path.exists(self.__file_path):
             try:
                 with open(self.__file_path, "r") as file:
