@@ -9,14 +9,20 @@ import models
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
     """class HBNBCommand defines the command interpreter."""
 
     prompt = "(hbnb) "
-    classes = {"BaseModel", "User", "State", "City",
-               "Amenity", "Place", "Review"}
+    classes = {"BaseModel": BaseModel, "User": User, "State": State,
+               "City": City, "Amenity": Amenity, "Place": Place,
+               "Review": Review}
 
     instance = []
 
