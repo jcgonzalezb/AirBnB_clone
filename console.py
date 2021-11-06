@@ -15,7 +15,8 @@ class HBNBCommand(cmd.Cmd):
     """class HBNBCommand defines the command interpreter."""
 
     prompt = "(hbnb) "
-    classes = {"BaseModel", "User", "State", "City", "Amenity", "Place", "Review"}
+    classes = {"BaseModel", "User", "State", "City",
+               "Amenity", "Place", "Review"}
 
     instance = []
 
