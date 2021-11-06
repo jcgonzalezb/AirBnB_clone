@@ -2,8 +2,8 @@
 """Module for test ModelBase"""
 """Unittest for BaseModel"""
 
-from datetime import datetime
 from models.base_model import BaseModel
+from datetime import datetime
 import unittest
 from uuid import uuid4
 
