@@ -7,6 +7,7 @@ Instance class FileStorage
 import json
 import models
 
+
 class FileStorage:
     """
     That serializes instances to a JSON file and
@@ -21,9 +22,7 @@ class FileStorage:
 
     def new(self, obj):
         """Sets an obj with class name and id"""
-        
         self.__objects['{}.{}'.format(type(obj).__name__, obj.id)] = obj
-        
 
     def save(self):
         """Serializes __objects (dict) to the JSON file"""
@@ -33,19 +32,19 @@ class FileStorage:
 
         with open(self.__file_path, 'w', encoding='utf-8') as file:
             json.dump(dic, file)
-            
 
     def reload(self):
         """Deserializes the JSON file to __objects"""
         from models.base_model import BaseModel
+        from models.user import User
         try:
             with open(self.__file_path, 'r') as file:
                 readed = file.read()
                 dic = json.loads(readed)
-            
+
             for key, value in dic.items():
                 instance = eval(value['__class__'])(**value)
                 self.__objects[key] = instance
-                
+
         except Exception as e:
             print('{}'.format(e))
