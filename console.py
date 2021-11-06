@@ -7,11 +7,13 @@ import shlex
 import models
 from models import storage
 from models.base_model import BaseModel
+from models.user import User
+
 
 class HBNBCommand(cmd.Cmd):
     """class HBNBCommand defines the command interpreter."""
     prompt = '(hbnb) '
-    classes = {"BaseModel"}
+    classes = {"BaseModel", "User"}
 
     instance = []
 
@@ -138,7 +140,7 @@ class HBNBCommand(cmd.Cmd):
         elif key not in sto_object.keys():
             print('** no instance found **')
             return
-        
+
         elif len(line_split) == 2:
             for value in sto_object.values():
                 if value.id == line_split[1]:
@@ -148,7 +150,7 @@ class HBNBCommand(cmd.Cmd):
             for value in sto_object.values():
                 if value.id == line_split[1]:
                     print('** value missing **')
-        
+
         else:
             setattr(sto_object[key], line_split[2], line_split[3])
             storage.save()
