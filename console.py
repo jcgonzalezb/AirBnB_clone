@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Command line"""
 
+
 import cmd
 from shlex import split
 import shlex
@@ -20,22 +21,30 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, line):
         """Command to exit the program."""
+
         return True
 
     def do_EOF(self, line):
         """Command to exit the program."""
+
         return True
 
     def emptyline(self):
         """will pass an empty line"""
+
         pass
 
     def do_create(self, line):
         """Create an instance."""
+
         if len(line) == 0:
             print("** class name missing **")
+            return
+
         elif line not in HBNBCommand.classes:
             print("** class doesn't exist **")
+            return
+
         else:
             instance = eval(line)()
             instance.save()
@@ -43,6 +52,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, line):
         """Show id and classname of instance."""
+
         sto_object = storage.all()
         line_split = line.split(" ")
         flag = True
@@ -74,7 +84,8 @@ class HBNBCommand(cmd.Cmd):
             print(instance)
 
     def do_destroy(self, line):
-        """Deletes an instance based on the class name and id"""
+        """Deletes an instance based on the class name and id."""
+
         line_split = line.split(" ")
         i = line.split()
 
@@ -104,6 +115,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, line):
         """Prints all string representation of all instances
         based or not on the class name"""
+
         line_split = line.split(" ")
         string_ins = []
         sto_object = storage.all()
@@ -146,11 +158,13 @@ class HBNBCommand(cmd.Cmd):
             for value in sto_object.values():
                 if value.id == line_split[1]:
                     print("** attribute name missing **")
+                    return
 
         elif len(line_split) == 3:
             for value in sto_object.values():
                 if value.id == line_split[1]:
                     print("** value missing **")
+                    return
 
         else:
             setattr(sto_object[key], line_split[2], line_split[3])
