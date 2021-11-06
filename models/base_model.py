@@ -18,6 +18,7 @@ class BaseModel:
             to_dict(self)
             __str__(self)
     """
+
     def __init__(self, *args, **kwargs):
         """
         Initialization function.
@@ -30,7 +31,7 @@ class BaseModel:
             datetime when an instance is created and it will
             be updated every time you change your object.
         """
-        attributes = ['created_at', 'updated_at', 'id']
+        attributes = ["created_at", "updated_at", "id"]
 
         if not kwargs:
             self.id = str(uuid.uuid4())
@@ -42,18 +43,23 @@ class BaseModel:
             if kwargs is not None and not args:
                 for key, value in kwargs.items():
                     if key in attributes:
-                        if key == 'created_at' or key == 'updated_at':
-                            setattr(self, key, datetime.strptime(value,
-                                    '%Y-%m-%dT%H:%M:%S.%f'))
+                        if key == "created_at" or key == "updated_at":
+                            setattr(
+                                self,
+                                key,
+                                datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f"),
+                            )
                         else:
-                            setattr(self, key, value)
+                            if key not in ["__class__"]:
+                                setattr(self, key, value)
 
     def __str__(self):
         """
         Function that prints [<class name>] (<self.id>) <self.__dict__>
         """
         return "[{:s}] ({:s}) {}".format(
-            self.__class__.__name__, self.id, self.__dict__)
+            self.__class__.__name__, self.id, self.__dict__
+        )
 
     def save(self):
         """
@@ -69,7 +75,7 @@ class BaseModel:
         """
         instance_dict = self.__dict__.copy()
 
-        instance_dict['__class__'] = self.__class__.__name__
-        instance_dict['created_at'] = self.created_at.isoformat()
-        instance_dict['updated_at'] = self.updated_at.isoformat()
+        instance_dict["__class__"] = self.__class__.__name__
+        instance_dict["created_at"] = self.created_at.isoformat()
+        instance_dict["updated_at"] = self.updated_at.isoformat()
         return instance_dict
