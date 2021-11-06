@@ -6,7 +6,7 @@ Write a class called BaseModel.
 import uuid
 from datetime import datetime
 import time
-from models  import storage
+from models import storage
 
 
 class BaseModel:
@@ -38,13 +38,14 @@ class BaseModel:
             self.updated_at = datetime.now()
             storage.new(self)
 
-        else: 
+        else:
             if kwargs is not None and not args:
                 for key, value in kwargs.items():
                     if key in attributes:
                         if key == 'created_at' or key == 'updated_at':
-                            setattr(self, key, datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f'))
-                        else:    
+                            setattr(self, key, datetime.strptime(value,
+                                    '%Y-%m-%dT%H:%M:%S.%f'))
+                        else:
                             setattr(self, key, value)
 
     def __str__(self):
