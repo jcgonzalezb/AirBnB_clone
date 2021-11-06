@@ -29,7 +29,9 @@ class HBNBCommand(cmd.Cmd):
 
     def emptyline(self):
         """will pass an empty line"""
-        pass
+        if self.lastcmd:
+            self.lastcmd = ""
+            return self.onecmd('\n')
 
     def do_create(self, line):
         """Create an instance."""
