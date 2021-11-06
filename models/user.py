@@ -17,3 +17,10 @@ class User(BaseModel):
 		last_name: string
         """
 
+	email = ''
+	password = ''
+	first_name = ''
+	last_name = ''
+
+	
+
