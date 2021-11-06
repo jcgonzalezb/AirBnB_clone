@@ -5,7 +5,6 @@ Write a class called BaseModel.
 
 import uuid
 from datetime import datetime
-import time
 from models import storage
 
 
@@ -57,9 +56,7 @@ class BaseModel:
         """
         Function that prints [<class name>] (<self.id>) <self.__dict__>
         """
-        return "[{:s}] ({:s}) {}".format(
-            self.__class__.__name__, self.id, self.__dict__
-        )
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         """
