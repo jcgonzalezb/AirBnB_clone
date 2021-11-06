@@ -19,12 +19,12 @@ class HBNBCommand(cmd.Cmd):
 
     instance = []
 
-    def do_quit(self, line):
+    def do_quit(self):
         """Command to exit the program."""
 
         return True
 
-    def do_EOF(self, line):
+    def do_EOF(self):
         """Command to exit the program."""
 
         return True
@@ -39,7 +39,6 @@ class HBNBCommand(cmd.Cmd):
 
         if len(line) == 0:
             print("** class name missing **")
-            return
 
         elif line not in HBNBCommand.classes:
             print("** class doesn't exist **")
@@ -59,7 +58,6 @@ class HBNBCommand(cmd.Cmd):
 
         if len(line) == 0:
             print("** class name missing **")
-            return
 
         elif line_split[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
