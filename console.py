@@ -29,7 +29,7 @@ class HBNBCommand(cmd.Cmd):
 
     def emptyline(self):
         """will pass an empty line"""
-        return cmd.Cmd.emptyline(self)
+        pass
 
     def do_create(self, line):
         """Create an instance."""
