@@ -35,9 +35,7 @@ class HBNBCommand(cmd.Cmd):
             print('** class doesn\'t exist **')
         else:
             instance = eval(line)()
-            print("instancia - {}".format(instance))
             instance.save()
-            print("instancia - {}".format(instance))
             print(instance.id)
 
     def do_show(self, line):
@@ -124,7 +122,6 @@ class HBNBCommand(cmd.Cmd):
         i = line.split()
         sto_object = storage.all()
         key = i[0] + '.' + i[1]
-        print(type(line))
 
         if len(line) == 0:
             print('** class name missing **')
