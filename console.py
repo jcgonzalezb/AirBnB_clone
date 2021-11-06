@@ -21,18 +21,15 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, line):
         """Command to exit the program."""
-
         return True
 
     def do_EOF(self, line):
         """Command to exit the program."""
-
         return True
 
     def emptyline(self):
         """will pass an empty line"""
-
-        pass
+        return cmd.Cmd.emptyline(self)
 
     def do_create(self, line):
         """Create an instance."""
