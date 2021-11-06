@@ -11,6 +11,6 @@ class State(BaseModel):
     Class to create State. This class inherits from BaseModel.
     Public class attributes:
         name: string
-"""
+    """
 
     name = ''
