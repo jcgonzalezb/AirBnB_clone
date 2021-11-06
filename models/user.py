@@ -8,8 +8,7 @@ from models.base_model import BaseModel
 
 class User(BaseModel):
         """
-        Class to create users. This class
-	inherits from BaseModel.
+        Class to create users. This class inherits from BaseModel.
 	Public class attributes:
 		email: string
 		password: string
@@ -21,6 +20,3 @@ class User(BaseModel):
 	password = ''
 	first_name = ''
 	last_name = ''
-
-	
-
