@@ -6,7 +6,7 @@ Instance class FileStorage
 
 import models
 import json
-
+import os
 
 class FileStorage:
     """
@@ -43,14 +43,18 @@ class FileStorage:
         from models.city import City
         from models.amenity import Amenity
         from models.review import Review
-        try:
-            with open(self.__file_path, "r") as file:
-                readed = file.read()
-                dic = json.loads(readed)
+        
+        if os.path.exists(self.__file_path):
+            try:
+                with open(self.__file_path, "r") as file:
+                    readed = file.read()
+                    dic = json.loads(readed)
 
-            for key, value in dic.items():
-                instance = eval(value["__class__"])(**value)
-                self.__objects[key] = instance
+                for key, value in dic.items():
+                    instance = eval(value["__class__"])(**value)
+                    self.__objects[key] = instance
 
-        except Exception as e:
-            print("{}".format(e))
+            except Exception as e:
+                print("{}".format(e))
+        else:
+            return
