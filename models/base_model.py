@@ -8,7 +8,7 @@ from datetime import datetime
 from models import storage
 
 
-class BaseModel:
+class BaseModel():
     """
     class BaseModel defines all common
     attributes/methods for other classes.
