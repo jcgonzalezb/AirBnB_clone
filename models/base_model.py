@@ -30,11 +30,10 @@ class BaseModel():
             datetime when an instance is created and it will
             be updated every time you change your object.
         """
-        if kwargs is not None:
+        if kwargs is not None and len(kwargs) > 0:
             for key, value in kwargs.items():
                 if key not in ["__class__"]:
                     setattr(self, key, value)
-
                 if key == "created_at" or key == "updated_at":
                     setattr(self, key,
                             datetime.strptime(value,
