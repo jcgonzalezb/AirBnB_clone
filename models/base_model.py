@@ -40,14 +40,13 @@ class BaseModel:
         else:
             if kwargs is not None and not args:
                 for key, value in kwargs.items():
+                    if key not in ["__class__"]:
+                        setattr(self, key, value)
+
                     if key == "created_at" or key == "updated_at":
                         setattr(self, key,
                                 datetime.strptime(value,
                                                   "%Y-%m-%dT%H:%M:%S.%f"))
-
-                    else:
-                        if key not in ["__class__"]:
-                            setattr(self, key, value)
 
     def __str__(self):
         """
