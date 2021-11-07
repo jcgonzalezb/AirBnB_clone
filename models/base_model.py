@@ -21,7 +21,6 @@ class BaseModel():
     def __init__(self, *args, **kwargs):
         """
         Initialization function.
-        If id is not None,
         Attributes:
             id: string - assign with an uuid when an instance is created.
             created_at: datetime - assign with the current datetime
