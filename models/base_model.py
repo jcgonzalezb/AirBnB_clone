@@ -74,7 +74,7 @@ class BaseModel():
         instance_dict = {}
         instance_dict = self.__dict__.copy()
 
-        instance_dict["__class__"] = self.__class__.__name__
-        instance_dict["created_at"] = self.created_at.isoformat()
-        instance_dict["updated_at"] = self.updated_at.isoformat()
+        instance_dict.update({'created_at': self.created_at.isoformat(),
+                              'updated_at': self.updated_at.isoformat(),
+                              '__class__': type(self).__name__})
         return instance_dict
