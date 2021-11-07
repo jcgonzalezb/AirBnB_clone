@@ -32,7 +32,7 @@ class BaseModel():
         """
         if kwargs is not None and len(kwargs) > 0:
             for key, value in kwargs.items():
-                if key not in ["__class__"]:
+                if key != "__class__":
                     setattr(self, key, value)
                 if key == "created_at" or key == "updated_at":
                     setattr(self, key,
@@ -60,10 +60,18 @@ class BaseModel():
         self.updated_at = datetime.now()
         storage.save()
 
+    def __repr__(self):
+        """
+        returns string representation
+        """
+        return (self.__str__())
+
     def to_dict(self):
         """
         Dictionary containing all keys/values of __dict__ of the instance
         """
+
+        instance_dict = {}
         instance_dict = self.__dict__.copy()
 
         instance_dict["__class__"] = self.__class__.__name__
