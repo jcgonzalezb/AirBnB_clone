@@ -47,7 +47,6 @@ class BaseModel():
         """
         Function that prints [<class name>] (<self.id>) <self.__dict__>
         """
-
         return ("[{:s}] ({:s}) {}".
                 format(self.__class__.__name__, self.id, self.__dict__))
 
@@ -69,7 +68,6 @@ class BaseModel():
         """
         Dictionary containing all keys/values of __dict__ of the instance
         """
-
         instance_dict = {}
         instance_dict = self.__dict__.copy()
 
