@@ -11,8 +11,7 @@ ISOFORMAT = "%Y-%m-%dT%H:%M:%S.%f"
 
 class BaseModel():
     """
-    class BaseModel defines all common
-    attributes/methods for other classes.
+    class BaseModel defines all common attributes/methods for other classes.
     Methods:
             save(self)
             to_dict(self)
