@@ -60,7 +60,7 @@ class BaseModel():
         """
         returns string representation
         """
-        return (self.__str__())
+        return self.__str__()
 
     def to_dict(self):
         """
