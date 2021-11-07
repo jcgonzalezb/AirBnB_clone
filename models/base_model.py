@@ -41,11 +41,9 @@ class BaseModel:
             if kwargs is not None and not args:
                 for key, value in kwargs.items():
                     if key == "created_at" or key == "updated_at":
-                        setattr(
-                            self,
-                            key,
-                            datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f"),
-                        )
+                        setattr(self, key,
+                                datetime.strptime(value,
+                                                  "%Y-%m-%dT%H:%M:%S.%f"))
 
                     else:
                         if key not in ["__class__"]:
@@ -56,9 +54,8 @@ class BaseModel:
         Function that prints [<class name>] (<self.id>) <self.__dict__>
         """
 
-        return "[{:s}] ({:s}) {}".format(
-            self.__class__.__name__, self.id, self.__dict__
-        )
+        return ("[{:s}] ({:s}) {}".
+                format(self.__class__.__name__, self.id, self.__dict__))
 
     def save(self):
         """
