@@ -30,7 +30,6 @@ class BaseModel:
             datetime when an instance is created and it will
             be updated every time you change your object.
         """
-        attributes = ["created_at", "updated_at", "id"]
 
         if not kwargs:
             self.id = str(uuid.uuid4())
@@ -41,15 +40,16 @@ class BaseModel:
         else:
             if kwargs is not None and not args:
                 for key, value in kwargs.items():
-                    if key in attributes:
-                        if key == "created_at" or key == "updated_at":
-                            setattr(self, key, datetime.strptime(value,
-                                    "%Y-%m-%dT%H:%M:%S.%f"))
-                        else:
-                            if key not in ["__class__"]:
-                                setattr(self, key, value)
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
+                    if key == "created_at" or key == "updated_at":
+                        setattr(
+                            self,
+                            key,
+                            datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f"),
+                        )
+
+                    else:
+                        if key not in ["__class__"]:
+                            setattr(self, key, value)
 
     def __str__(self):
         """
