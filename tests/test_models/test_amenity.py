@@ -2,7 +2,7 @@
 """ Unittest for amenity.py """
 
 import unittest
-import datetime
+from datetime import datetime
 import models
 from models import amenity
 from models import base_model
