@@ -80,7 +80,9 @@ class HBNBCommand(cmd.Cmd):
             return
 
         else:
-            print(sto_object[key])
+            instance = eval(line)()
+            instance.__str__()
+            print(instance)
 
     def do_destroy(self, line):
         """Deletes an instance based on the class name and id."""
@@ -173,3 +175,5 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
 
+if __name__ == "__main__":
+    HBNBCommand().cmdloop()
