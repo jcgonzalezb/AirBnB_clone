@@ -14,6 +14,7 @@ class TestBaseModel(unittest.TestCase):
     """This class contains several methods to test the
     base_model.py file.
     """
+
     def test_class(self):
         """Test instance of the class"""
         base = BaseModel()
@@ -42,7 +43,7 @@ class TestBaseModel(unittest.TestCase):
         """Check the string of an created instance"""
         bm1 = BaseModel()
         printed = "[{}] ({}) {}".format(
-        bm1.__class__.__name__, bm1.id, bm1.__dict__)
+            bm1.__class__.__name__, bm1.id, bm1.__dict__)
         self.assertEqual(str(bm1), printed)
 
     def test_save(self):
