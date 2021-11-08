@@ -2,8 +2,6 @@
 """
 Instance class FileStorage
 """
-
-import models
 import json
 import os
 
