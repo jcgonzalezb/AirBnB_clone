@@ -3,6 +3,7 @@
 
 import unittest
 from models import amenity
+
 Amenity = amenity.Amenity
 
 
