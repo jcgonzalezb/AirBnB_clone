@@ -1,13 +1,13 @@
 #!/usr/bin/python3
-"""Unittest for base_model.py
+"""Unittest for user.py
 """
 import unittest
 import json
 import os
-from models import base_model
+from models import user
 
 
-class TestBaseModel(unittest.TestCase):
+class TestUser(unittest.TestCase):
     """This class contains several methods to test the
-    base_model.py file.
+    user.py file.
     """
