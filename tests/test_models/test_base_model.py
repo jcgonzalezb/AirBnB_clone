@@ -4,7 +4,8 @@
 import unittest
 import json
 import os
-from models import TestBaseModel
+from models import base_model
+BaseModel = base_model
 
 
 class TestBaseModel(unittest.TestCase):
