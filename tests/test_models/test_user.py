@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Unittest for user.py
+"""
+Unittest for user.py
 """
 import unittest
 import json
