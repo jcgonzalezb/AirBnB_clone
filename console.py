@@ -36,9 +36,7 @@ class HBNBCommand(cmd.Cmd):
 
     def emptyline(self):
         """will pass an empty line"""
-        if self.lastcmd:
-            self.lastcmd = ""
-            return self.onecmd('\n')
+        pass
 
     def do_create(self, line):
         """Create an instance."""
@@ -172,3 +170,5 @@ class HBNBCommand(cmd.Cmd):
             setattr(sto_object[key], line_split[2], line_split[3])
             storage.save()
 
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
