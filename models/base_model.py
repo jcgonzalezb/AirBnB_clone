@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Write a class called BaseModel.
+Provides a class 'BaseModel' to serve as a base class for all other models.
 """
 import uuid
 from datetime import datetime
