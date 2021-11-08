@@ -4,7 +4,6 @@ Instance class FileStorage
 """
 import json
 import os
-from models.engine import FileStorage
 
 
 class FileStorage:
