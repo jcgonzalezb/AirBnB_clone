@@ -4,7 +4,9 @@
 import unittest
 import json
 import os
+from models import TestUser
 from models import user
+User = user.User
 
 
 class TestUser(unittest.TestCase):
