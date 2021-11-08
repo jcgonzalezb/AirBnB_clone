@@ -38,11 +38,12 @@ class TestBaseModel(unittest.TestCase):
         ret_dic = base4.to_dict()
         self.assertTrue(isinstance(ret_dic, dict))
 
-    def test_str(self):
-        """Test an obj representation of an instance"""
-        base5 = BaseModel()
-        str_base = base5.__str__()
-        self.assertTrue(str_base, str)
+    def test__str__(self):
+        """Check the string of an created instance"""
+        bm1 = BaseModel()
+        printed = "[{}] ({}) {}".format(
+        bm1.__class__.__name__, bm1.id, bm1.__dict__)
+        self.assertEqual(str(bm1), printed)
 
     def test_save(self):
         """Test it saves an instance"""
