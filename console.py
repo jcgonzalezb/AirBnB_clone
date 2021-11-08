@@ -29,6 +29,12 @@ class HBNBCommand(cmd.Cmd):
         "Place": Place,
         "Review": Review,
     }
+        "State": State,
+        "City": City,
+        "Amenity": Amenity,
+        "Place": Place,
+        "Review": Review,
+    }
 
     instance = []
 
@@ -38,7 +44,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, line):
         """Command to exit the program."""
-        return True
+            return self.onecmd("\n")
 
     def emptyline(self):
         """will pass an empty line"""
@@ -126,7 +132,7 @@ class HBNBCommand(cmd.Cmd):
         """Prints all string representation of all instances
         based or not on the class name"""
 
-        line_split = line.split(" ")
+        line_split = line.split(" ") if type(line) == str else line
         string_ins = []
         sto_object = storage.all()
         if line:
@@ -139,7 +145,7 @@ class HBNBCommand(cmd.Cmd):
                     string_ins.append(value.__str__())
                 print("{}".format(string_ins))
 
-        string_ins = [str(value) for value in sto_object.all().values()]
+        string_ins = [str(value) for value in sto_object.values()]
         print(string_ins)
 
     def do_update(self, line):
@@ -148,8 +154,6 @@ class HBNBCommand(cmd.Cmd):
 
         line_split = shlex.split(line)
         i = line.split()
-        sto_object = storage.all()
-        key = i[0] + "." + i[1]
 
         if len(line) == 0:
             print("** class name missing **")
@@ -163,7 +167,10 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return
 
-        elif key not in sto_object.keys():
+        sto_object = storage.all()
+        key = i[0] + "." + i[1]
+        
+        if key not in sto_object.keys():
             print("** no instance found **")
             return
 
