@@ -139,8 +139,6 @@ class HBNBCommand(cmd.Cmd):
 
         line_split = shlex.split(line)
         i = line.split()
-        sto_object = storage.all()
-        key = i[0] + "." + i[1]
 
         if len(line) == 0:
             print("** class name missing **")
@@ -154,7 +152,9 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return
 
-        elif key not in sto_object.keys():
+        sto_object = storage.all()
+        key = i[0] + "." + i[1]
+        if key not in sto_object.keys():
             print("** no instance found **")
             return
 
