@@ -60,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
 
         sto_object = storage.all()
         line_split = line.split(" ")
-        flag = True
+        i = line.split()
 
         if len(line) == 0:
             print("** class name missing **")
@@ -73,14 +73,11 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return
 
-        elif len(line_split) > 0:
-            for value in sto_object.values():
-                if value.id == line_split[1]:
-                    print(value)
-                    flag = False
-            if flag is True:
-                print("** no instance found **")
-                return
+        sto_object = storage.all()
+        key = i[0] + "." + i[1]
+        if key not in sto_object.keys():
+            print("** no instance found **")
+            return
 
         else:
             instance = eval(line)()
