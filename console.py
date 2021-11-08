@@ -32,13 +32,11 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, line):
         """Command to exit the program."""
-        return True
+        return self.onecmd("\n")
 
     def emptyline(self):
         """will pass an empty line"""
-        if self.lastcmd:
-            self.lastcmd = ""
-            return self.onecmd('\n')
+        pass
 
     def do_create(self, line):
         """Create an instance."""
@@ -120,18 +118,21 @@ class HBNBCommand(cmd.Cmd):
         """Prints all string representation of all instances
         based or not on the class name"""
 
-        line_split = line.split(" ")
+        line_split = line.split(" ") if type(line) == str else line
         string_ins = []
         sto_object = storage.all()
+        if line:
+            if line_split[0] not in HBNBCommand.classes:
+                print("** class doesn't exist **")
+                return
 
-        if line_split[0] not in HBNBCommand.classes:
-            print("** class doesn't exist **")
-            return
+            else:
+                for value in sto_object.values():
+                    string_ins.append(value.__str__())
+                print("{}".format(string_ins))
 
-        else:
-            for value in sto_object.values():
-                string_ins.append(value.__str__())
-            print("{}".format(string_ins))
+        string_ins = [str(value) for value in sto_object.values()]
+        print(string_ins)
 
     def do_update(self, line):
         """Updates an instance based on the class name
