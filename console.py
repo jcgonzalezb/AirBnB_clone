@@ -171,3 +171,5 @@ class HBNBCommand(cmd.Cmd):
             setattr(sto_object[key], line_split[2], line_split[3])
             storage.save()
 
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
