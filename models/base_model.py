@@ -56,12 +56,6 @@ class BaseModel():
         self.updated_at = datetime.now()
         storage.save()
 
-    def __repr__(self):
-        """
-        returns string representation
-        """
-        return self.__str__()
-
     def to_dict(self):
         """
         Dictionary containing all keys/values of __dict__ of the instance
