@@ -20,21 +20,9 @@ class HBNBCommand(cmd.Cmd):
     """class HBNBCommand defines the command interpreter."""
 
     prompt = "(hbnb) "
-    classes = {
-        "BaseModel": BaseModel,
-        "User": User,
-        "State": State,
-        "City": City,
-        "Amenity": Amenity,
-        "Place": Place,
-        "Review": Review,
-    }
-        "State": State,
-        "City": City,
-        "Amenity": Amenity,
-        "Place": Place,
-        "Review": Review,
-    }
+    classes = {"BaseModel": BaseModel, "User": User, "State": State,
+               "City": City, "Amenity": Amenity, "Place": Place,
+               "Review": Review}
 
     instance = []
 
@@ -44,13 +32,13 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, line):
         """Command to exit the program."""
-            return self.onecmd("\n")
+        return True
 
     def emptyline(self):
         """will pass an empty line"""
         if self.lastcmd:
             self.lastcmd = ""
-            return self.onecmd("\n")
+            return self.onecmd('\n')
 
     def do_create(self, line):
         """Create an instance."""
@@ -132,21 +120,18 @@ class HBNBCommand(cmd.Cmd):
         """Prints all string representation of all instances
         based or not on the class name"""
 
-        line_split = line.split(" ") if type(line) == str else line
+        line_split = line.split(" ")
         string_ins = []
         sto_object = storage.all()
-        if line:
-            if line_split[0] not in HBNBCommand.classes:
-                print("** class doesn't exist **")
-                return
 
-            else:
-                for value in sto_object.values():
-                    string_ins.append(value.__str__())
-                print("{}".format(string_ins))
+        if line_split[0] not in HBNBCommand.classes:
+            print("** class doesn't exist **")
+            return
 
-        string_ins = [str(value) for value in sto_object.values()]
-        print(string_ins)
+        else:
+            for value in sto_object.values():
+                string_ins.append(value.__str__())
+            print("{}".format(string_ins))
 
     def do_update(self, line):
         """Updates an instance based on the class name
@@ -169,7 +154,6 @@ class HBNBCommand(cmd.Cmd):
 
         sto_object = storage.all()
         key = i[0] + "." + i[1]
-        
         if key not in sto_object.keys():
             print("** no instance found **")
             return
