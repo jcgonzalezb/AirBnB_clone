@@ -20,9 +20,15 @@ class HBNBCommand(cmd.Cmd):
     """class HBNBCommand defines the command interpreter."""
 
     prompt = "(hbnb) "
-    classes = {"BaseModel": BaseModel, "User": User, "State": State,
-               "City": City, "Amenity": Amenity, "Place": Place,
-               "Review": Review}
+    classes = {
+        "BaseModel": BaseModel,
+        "User": User,
+        "State": State,
+        "City": City,
+        "Amenity": Amenity,
+        "Place": Place,
+        "Review": Review,
+    }
 
     instance = []
 
@@ -38,7 +44,7 @@ class HBNBCommand(cmd.Cmd):
         """will pass an empty line"""
         if self.lastcmd:
             self.lastcmd = ""
-            return self.onecmd('\n')
+            return self.onecmd("\n")
 
     def do_create(self, line):
         """Create an instance."""
@@ -123,15 +129,18 @@ class HBNBCommand(cmd.Cmd):
         line_split = line.split(" ")
         string_ins = []
         sto_object = storage.all()
+        if line:
+            if line_split[0] not in HBNBCommand.classes:
+                print("** class doesn't exist **")
+                return
 
-        if line_split[0] not in HBNBCommand.classes:
-            print("** class doesn't exist **")
-            return
+            else:
+                for value in sto_object.values():
+                    string_ins.append(value.__str__())
+                print("{}".format(string_ins))
 
-        else:
-            for value in sto_object.values():
-                string_ins.append(value.__str__())
-            print("{}".format(string_ins))
+        string_ins = [str(value) for value in sto_object.all().values()]
+        print(string_ins)
 
     def do_update(self, line):
         """Updates an instance based on the class name
@@ -139,6 +148,8 @@ class HBNBCommand(cmd.Cmd):
 
         line_split = shlex.split(line)
         i = line.split()
+        sto_object = storage.all()
+        key = i[0] + "." + i[1]
 
         if len(line) == 0:
             print("** class name missing **")
@@ -152,9 +163,7 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return
 
-        sto_object = storage.all()
-        key = i[0] + "." + i[1]
-        if key not in sto_object.keys():
+        elif key not in sto_object.keys():
             print("** no instance found **")
             return
 
