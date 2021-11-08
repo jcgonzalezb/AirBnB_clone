@@ -54,7 +54,3 @@ class TestBaseModel(unittest.TestCase):
         hour2 = my_model.updated_at
         self.assertNotEqual(hour, hour2)
         self.assertTrue(os.path.exists('file.json'))
-
-
-
-        
