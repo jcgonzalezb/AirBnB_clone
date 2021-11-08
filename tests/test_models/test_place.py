@@ -2,9 +2,10 @@
 """Unittest for place.py"""
 
 import unittest
-from models import TestPlace
+from models import base_model
 from models import place
 Place = place.Place
+BaseModel = base_model.BaseModel
 
 
 class TestPlace(unittest.TestCase):
