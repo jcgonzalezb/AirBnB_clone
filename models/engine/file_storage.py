@@ -49,11 +49,9 @@ class FileStorage:
                 with open(self.__file_path, "r") as file:
                     readed = file.read()
                     dic = json.loads(readed)
-
                 for key, value in dic.items():
                     instance = eval(value["__class__"])(**value)
                     self.__objects[key] = instance
-
             except Exception as e:
                 print("{}".format(e))
         else:
