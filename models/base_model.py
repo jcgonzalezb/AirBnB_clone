@@ -69,6 +69,6 @@ class BaseModel():
         instance_dict = {}
         instance_dict = self.__dict__.copy()
         instance_dict["__class__"] = self.__class__.__name__
-        instance_dict["created_at"] = self.created_at.isoformat()
-        instance_dict["updated_at"] = self.updated_at.isoformat()
+        instance_dict["created_at"] = datetime.isoformat(self.created_at)
+        instance_dict["updated_at"] = datetime.isoformat(self.updated_at)
         return instance_dict
