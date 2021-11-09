@@ -4,6 +4,7 @@
 import unittest
 from models import base_model
 from models import state
+from datetime import datetime
 State = state.State
 BaseModel = base_model.BaseModel
 
@@ -40,6 +41,3 @@ class TestState(unittest.TestCase):
         st1 = State()
         st2 = State()
         self.assertNotEqual(st1.id, st2.id)
-
-if _name_ == "_main_":
-    unittest.main()

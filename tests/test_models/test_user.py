@@ -6,7 +6,9 @@ import unittest
 import json
 import os
 from models import base_model
+import models
 from models import user
+from datetime import datetime
 User = user.User
 BaseModel = base_model.BaseModel
 
@@ -43,6 +45,3 @@ class TestUser(unittest.TestCase):
         base = User()
         base_str = base.__str__()
         self.assertTrue(isinstance(base_str, str))
-
-if _name_ == "_main_":
-    unittest.main()

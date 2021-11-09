@@ -42,6 +42,3 @@ class TestPlace(unittest.TestCase):
         amme = Place()
         amme.name = "Betty"
         self.assertIn("name", amme.to_dict())
-
-if _name_ == "_main_":
-    unittest.main()

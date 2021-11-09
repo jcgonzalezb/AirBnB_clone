@@ -36,6 +36,3 @@ class TestReview(unittest.TestCase):
     def test_instance_BaseModel(self):
         amenity = Review()
         self.assertTrue(isinstance(amenity, BaseModel))
-
-if _name_ == "_main_":
-    unittest.main()

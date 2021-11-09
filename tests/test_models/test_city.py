@@ -4,6 +4,7 @@
 import unittest
 from models import city
 from models import base_model
+from datetime import datetime
 City = city.City
 BaseModel = base_model.BaseModel
 
@@ -30,9 +31,5 @@ class TestCity(unittest.TestCase):
 
     def test_str(self):
         base = City()
-        base_str = base._str_()
+        base_str = base.__str__()
         self.assertTrue(isinstance(base_str, str))
-
-
-if _name_ == "_main_":
-    unittest.main()
