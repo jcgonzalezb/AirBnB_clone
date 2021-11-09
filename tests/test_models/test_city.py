@@ -29,11 +29,10 @@ class TestCity(unittest.TestCase):
         self.assertNotEqual(city1.id, city2.id)
 
     def test_str(self):
-        
         base = City()
-        base_str = base.__str__()
-        self.assertTrue(isinstance(base_str, str))    
+        base_str = base._str_()
+        self.assertTrue(isinstance(base_str, str))
 
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     unittest.main()

@@ -25,3 +25,23 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(Place.longitude, 0.0)
         self.assertEqual(Place.amenity_ids, [])
         self.assertTrue(issubclass(Place, BaseModel))
+
+    def test_docstring(self):
+        """
+        Testing docstring
+        """
+        self.assertIsNotNone(Place.__doc__)
+
+    def test_instance_BaseModel(self):
+        """ Tests inheritance """
+        amenity = Place()
+        self.assertTrue(isinstance(amenity, BaseModel))
+
+    def test_instaciacion(self):
+        """ Tests correct instatiation of the class """
+        amme = Place()
+        amme.name = "Betty"
+        self.assertIn("name", amme.to_dict())
+
+if _name_ == "_main_":
+    unittest.main()
