@@ -61,7 +61,7 @@ class TestBaseModel(unittest.TestCase):
         """Test for correct update of attribute updated_at"""
         old_updated_at = self.base_1.updated_at
         time.sleep(0.5)
-        self.base_1.save() 
+        self.base_1.save()
         base_1_key = type(self.base_1).__name__ + "." + self.base_1.id
         with open("file.json", "r") as f:
             json_text = f.read()
@@ -74,4 +74,3 @@ class TestBaseModel(unittest.TestCase):
         """Test for correct __str__ output"""
         correct_output = "[BaseModel] ({}) {}".format(
             self.base_1.id, self.base_1.__dict__)
-    
