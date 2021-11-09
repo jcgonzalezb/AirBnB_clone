@@ -5,7 +5,6 @@ Unittest for base_model.py
 import unittest
 import json
 import os
-from os import chdir, getcwd, path
 from datetime import datetime
 from models import storage
 from models import base_model
@@ -75,7 +74,6 @@ class TestBaseModel(unittest.TestCase):
         obj.age = 88.32
         obj.save()
         time2 = obj.updated_at
-        dict_obj = storage.all()
         obj_ref = storage.all().get("BaseModel.{}".format(obj.id))
         self.assertNotEqual(time1, time2)
         self.assertEqual(obj.id, obj_ref.id)
