@@ -54,17 +54,6 @@ class TestBaseModel(unittest.TestCase):
             bm1.__class__.__name__, bm1.id, bm1.__dict__)
         self.assertEqual(str(bm1), printed)
 
-    def test_save(self):
-        """Test it saves an instance"""
-        my_model = BaseModel()
-        my_model.name = "My First Model"
-        my_model.my_number = 89
-        hour = my_model.updated_at
-        my_model.save()
-        hour2 = my_model.updated_at
-        self.assertNotEqual(hour, hour2)
-        self.assertTrue(os.path.exists('file.json'))
-
     def test_str(self):
         """
         Test __str__ method
