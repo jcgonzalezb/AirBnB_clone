@@ -4,9 +4,10 @@ Unittest for base_model.py
 """
 import unittest
 import json
-import os
+from os import path
 from datetime import datetime
 from models import base_model
+from models.engine.file_storage import FileStorage
 BaseModel = base_model.BaseModel
 
 
@@ -14,6 +15,11 @@ class TestBaseModel(unittest.TestCase):
     """This class contains several methods to test the
     base_model.py file.
     """
+    @classmethod
+    def setUpClass(cls):
+        cls.base1 = BaseModel()
+        cls.base1.name = "Betty"
+        cls.base1.my_number = 89
 
     def test_class(self):
         """Test instance of the class"""
@@ -57,20 +63,30 @@ class TestBaseModel(unittest.TestCase):
         self.assertNotEqual(hour, hour2)
         self.assertTrue(os.path.exists('file.json'))
 
+    def test_str(self):
+        """
+        Test __str__ method
+        """
+        my_model = BaseModel()
+        string = '[{}] ({}) {}'.format(
+            my_model.__class__.__name__,
+            my_model.id,
+            my_model.__dict__,
+        )
+        self.assertEqual(string, str(my_model))
+
     def test_save(self):
-        """Test for correct update of attribute updated_at"""
-        old_updated_at = self.base_1.updated_at
-        time.sleep(0.5)
-        self.base_1.save()
-        base_1_key = type(self.base_1).__name__ + "." + self.base_1.id
-        with open("file.json", "r") as f:
-            json_text = f.read()
+        self.base1.save()
+        self.assertNotEqual(self.base1.created_at, self.base1.updated_at)
 
-        self.assertTrue(base_1_key in json_text)
-        self.assertNotEqual(self.base_1.created_at, self.base_1.updated_at)
-        self.assertNotEqual(self.base_1.updated_at, old_updated_at)
-
-    def test_str_magic_method(self):
-        """Test for correct __str__ output"""
-        correct_output = "[BaseModel] ({}) {}".format(
-            self.base_1.id, self.base_1.__dict__)
+    def test_to_dict(self):
+        """
+        Test to_dict method
+        """
+        my_model = BaseModel()
+        self.assertEqual(my_model.to_dict()['__class__'],
+                         my_model.__class__.__name__)
+        self.assertEqual(my_model.to_dict()["updated_at"],
+                         my_model.updated_at.isoformat())
+        self.assertEqual(my_model.to_dict()["created_at"],
+                         my_model.created_at.isoformat())
