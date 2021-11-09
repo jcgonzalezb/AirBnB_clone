@@ -2,9 +2,10 @@
 """Test Review"""
 
 import unittest
-from models import TestReview
+from models import base_model
 from models import review
 Review = review.Review
+BaseModel = base_model.BaseModel
 
 
 class TestReview(unittest.TestCase):
