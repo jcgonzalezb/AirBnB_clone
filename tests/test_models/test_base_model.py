@@ -4,9 +4,10 @@ Unittest for base_model.py
 """
 import unittest
 import json
+import os
 from os import chdir, getcwd, path
 from datetime import datetime
-from time import sleep
+from models import storage
 from models import base_model
 from models.engine.file_storage import FileStorage
 BaseModel = base_model.BaseModel
@@ -67,8 +68,20 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(string, str(my_model))
 
     def test_save(self):
-        self.base1.save()
-        self.assertNotEqual(self.base1.created_at, self.base1.updated_at)
+        """ Tests the save method """
+        obj = BaseModel()
+        time1 = obj.updated_at
+        obj.name = "Plankton"
+        obj.age = 88.32
+        obj.save()
+        time2 = obj.updated_at
+        dict_obj = storage.all()
+        obj_ref = storage.all().get("BaseModel.{}".format(obj.id))
+        self.assertNotEqual(time1, time2)
+        self.assertEqual(obj.id, obj_ref.id)
+        self.assertEqual(obj.name, obj_ref.name)
+        self.assertEqual(obj.age, obj_ref.age)
+        self.assertTrue(os.path.exists('file.json'))
 
     def test_to_dict(self):
         """
