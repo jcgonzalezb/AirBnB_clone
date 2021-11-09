@@ -46,7 +46,7 @@ class TestUser(unittest.TestCase):
         base_str = base.__str__()
         self.assertTrue(isinstance(base_str, str))
 
-def test_class(self):
+    def test_class(self):
         """Test class"""
         self.assertEqual(User.email, "")
         self.assertEqual(User.password, "")
