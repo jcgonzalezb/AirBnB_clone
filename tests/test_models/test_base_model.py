@@ -90,3 +90,23 @@ class TestBaseModel(unittest.TestCase):
                          my_model.updated_at.isoformat())
         self.assertEqual(my_model.to_dict()["created_at"],
                          my_model.created_at.isoformat())
+    def test_init_basemodel_from_dictionary(self):
+        """
+        Checks when it is passed a dictionary to the init method.
+        """
+        model = BaseModel()
+        model.name = "Holberton"
+        model.my_number = 89
+        model_json = model.to_dict()
+        my_new_model = BaseModel(**model_json)
+        # Checks that the object has the same attributes that the model
+        dict_attr = {'name': 'Holberton', 'my_number': 89, 'id': model.id,
+                     'created_at': model.created_at,
+                     'updated_at': model.updated_at}
+        for key, value in dict_attr.items():
+            self.assertTrue(hasattr(my_new_model, key))
+            self.assertEqual(getattr(my_new_model, key), value)
+        # Checks if __class__ attribute was not added
+        self.assertTrue(hasattr(my_new_model, key))
+        cls_name = getattr(my_new_model, key)
+        self.assertNotEqual(cls_name, model_json["__class__"])
