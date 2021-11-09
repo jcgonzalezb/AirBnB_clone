@@ -4,8 +4,9 @@ Unittest for base_model.py
 """
 import unittest
 import json
-from os import path
+from os import chdir, getcwd, path
 from datetime import datetime
+from time import sleep
 from models import base_model
 from models.engine.file_storage import FileStorage
 BaseModel = base_model.BaseModel
@@ -15,7 +16,7 @@ class TestBaseModel(unittest.TestCase):
     """This class contains several methods to test the
     base_model.py file.
     """
-    MODEL = path.join(getcwd(), 'models', 'base_model.py')
+
     @classmethod
     def setUpClass(cls):
         cls.base1 = BaseModel()
@@ -91,6 +92,7 @@ class TestBaseModel(unittest.TestCase):
                          my_model.updated_at.isoformat())
         self.assertEqual(my_model.to_dict()["created_at"],
                          my_model.created_at.isoformat())
+
     def test_init_basemodel_from_dictionary(self):
         """
         Checks when it is passed a dictionary to the init method.
@@ -112,17 +114,20 @@ class TestBaseModel(unittest.TestCase):
         cls_name = getattr(my_new_model, key)
         self.assertNotEqual(cls_name, model_json["__class__"])
 
-     def test_save(self):
-        """
-        Test save method
-        """
-        my_model = BaseModel()
-        my_storage = FileStorage()
-        update = my_model.__dict__['updated_at']
-        self.assertFalse(path.isfile('file.json'))
-        my_model.save()
-        self.assertTrue(path.isfile('file.json'))
-        self.assertNotEqual(my_model.__dict__['updated_at'], update)
-        update = my_model.__dict__['updated_at']
-        my_storage.reload()
-        self.assertEqual(my_model.__dict__['updated_at'], update)
+    def test_one_save(self):
+        bm = BaseModel()
+        sleep(0.05)
+        first_updated_at = bm.updated_at
+        bm.save()
+        self.assertLess(first_updated_at, bm.updated_at)
+
+    def test_two_saves(self):
+        bm = BaseModel()
+        sleep(0.05)
+        first_updated_at = bm.updated_at
+        bm.save()
+        second_updated_at = bm.updated_at
+        self.assertLess(first_updated_at, second_updated_at)
+        sleep(0.05)
+        bm.save()
+        self.assertLess(second_updated_at, bm.updated_at)
