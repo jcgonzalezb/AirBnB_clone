@@ -15,6 +15,7 @@ class TestBaseModel(unittest.TestCase):
     """This class contains several methods to test the
     base_model.py file.
     """
+    MODEL = path.join(getcwd(), 'models', 'base_model.py')
     @classmethod
     def setUpClass(cls):
         cls.base1 = BaseModel()
@@ -110,3 +111,18 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(hasattr(my_new_model, key))
         cls_name = getattr(my_new_model, key)
         self.assertNotEqual(cls_name, model_json["__class__"])
+
+     def test_save(self):
+        """
+        Test save method
+        """
+        my_model = BaseModel()
+        my_storage = FileStorage()
+        update = my_model.__dict__['updated_at']
+        self.assertFalse(path.isfile('file.json'))
+        my_model.save()
+        self.assertTrue(path.isfile('file.json'))
+        self.assertNotEqual(my_model.__dict__['updated_at'], update)
+        update = my_model.__dict__['updated_at']
+        my_storage.reload()
+        self.assertEqual(my_model.__dict__['updated_at'], update)
