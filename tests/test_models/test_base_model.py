@@ -102,21 +102,3 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(hasattr(my_new_model, key))
         cls_name = getattr(my_new_model, key)
         self.assertNotEqual(cls_name, model_json["__class__"])
-
-    def test_one_save(self):
-        bm = BaseModel()
-        sleep(0.05)
-        first_updated_at = bm.updated_at
-        bm.save()
-        self.assertLess(first_updated_at, bm.updated_at)
-
-    def test_two_saves(self):
-        bm = BaseModel()
-        sleep(0.05)
-        first_updated_at = bm.updated_at
-        bm.save()
-        second_updated_at = bm.updated_at
-        self.assertLess(first_updated_at, second_updated_at)
-        sleep(0.05)
-        bm.save()
-        self.assertLess(second_updated_at, bm.updated_at)
