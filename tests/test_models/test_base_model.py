@@ -68,17 +68,17 @@ class TestBaseModel(unittest.TestCase):
 
     def test_save(self):
         """ Tests the save method """
-        obj = BaseModel()
-        time1 = obj.updated_at
-        obj.name = "Plankton"
-        obj.age = 88.32
-        obj.save()
-        time2 = obj.updated_at
-        obj_ref = storage.all().get("BaseModel.{}".format(obj.id))
-        self.assertNotEqual(time1, time2)
-        self.assertEqual(obj.id, obj_ref.id)
-        self.assertEqual(obj.name, obj_ref.name)
-        self.assertEqual(obj.age, obj_ref.age)
+        object = BaseModel()
+        t1 = object.updated_at
+        object.name = "Betty"
+        object.age = 89
+        object.save()
+        t2 = object.updated_at
+        obj_ref = storage.all().get("BaseModel.{}".format(object.id))
+        self.assertNotEqual(t1, t2)
+        self.assertEqual(object.id, obj_ref.id)
+        self.assertEqual(object.name, obj_ref.name)
+        self.assertEqual(object.age, obj_ref.age)
         self.assertTrue(os.path.exists('file.json'))
 
     def test_to_dict(self):
