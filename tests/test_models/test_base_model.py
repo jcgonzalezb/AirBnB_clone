@@ -56,3 +56,22 @@ class TestBaseModel(unittest.TestCase):
         hour2 = my_model.updated_at
         self.assertNotEqual(hour, hour2)
         self.assertTrue(os.path.exists('file.json'))
+
+    def test_save(self):
+        """Test for correct update of attribute updated_at"""
+        old_updated_at = self.base_1.updated_at
+        time.sleep(0.5)
+        self.base_1.save() 
+        base_1_key = type(self.base_1).__name__ + "." + self.base_1.id
+        with open("file.json", "r") as f:
+            json_text = f.read()
+
+        self.assertTrue(base_1_key in json_text)
+        self.assertNotEqual(self.base_1.created_at, self.base_1.updated_at)
+        self.assertNotEqual(self.base_1.updated_at, old_updated_at)
+
+    def test_str_magic_method(self):
+        """Test for correct __str__ output"""
+        correct_output = "[BaseModel] ({}) {}".format(
+            self.base_1.id, self.base_1.__dict__)
+    
