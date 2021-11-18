@@ -3,6 +3,7 @@ header {
 	width: 100%;
 	background: white;
 	border-bottom: 1px solid #CCCCCC;
-	padding:60px 0 0 0;
-	background-image: url("images/logo.png") no-repeat top left; 
+	background: url(/images/logo.png) no-repeat;
+	background-position: center left 20px;
+	background-size: auto;
 }
