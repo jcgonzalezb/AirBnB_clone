@@ -63,3 +63,16 @@ div.amenities.ul.popover {
 div.locations h2 {
 	font-size: 18px;
 }
+
+li {
+	list-style: none;
+	margin: 0 auto;
+	border-left: 2px solid #3ca0e7;
+	display: inline-block;
+	padding: 0 30px;
+	position: relative;
+	text-decoration: none;
+	text-align: center;
+	font-family: arvo;
+	}
+
