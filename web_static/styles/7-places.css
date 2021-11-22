@@ -1,11 +1,8 @@
 section.places {
-	font-size: 30px;
-	text-align: left;
-	margin-top: auto;
-	margin-bottom: auto;
-	margin-left: 180px;
 	display: flex;
+	justify-content: center;
 	flex-wrap: wrap;
+	margin: auto;
 }
 
 article.article {
@@ -15,6 +12,12 @@ article.article {
 	border: 1px solid #FF5A5F;
 	border-radius: 4px;
 	text-align: center;
+	margin-top: 0px;
+}
+
+h1 {
+	font-size: 30px;
+	margin-left: 200px;
 }
 
 article.article h2 {
