@@ -1,25 +1,26 @@
 section.places {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	margin: auto;
+	text-align: center;
+	margin: 20px;
 }
 
-article.article {
+article {
 	width: 390px;
 	margin: 20px;
 	padding: 20px;
 	border: 1px solid #FF5A5F;
 	border-radius: 4px;
 	text-align: center;
-	margin-top: 0px;
+	display: inline-block;
 }
 
-h1 {
+.places h1 {
+	vertical-align: top;
+	text-align: left;
 	font-size: 30px;
-	margin-left: 200px;
+	margin-bottom: 0px;
 }
 
-article.article h2 {
+article h2 {
 	font-size: 30px;
+	text-align: center;
 }
