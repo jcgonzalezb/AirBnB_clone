@@ -44,25 +44,37 @@ div.information {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
+	background-position: center;
+	background-image:
+		url(/images/icon_group.png),
+		url(/images/icon_bed.png),
+		url(/images/icon_bath.png);
+	background-repeat: no-repeat, no-repeat, no-repeat;
+	background-position: top 10px left 70px, top 10px center, top 10px left 275px;
 }
 
 div.max_guest {
 	width: 100px;
+	margin-top: 45px;
 }
 
 div.number_rooms {
 	width: 100px;
+	margin-top: 45px;
 }
 
 div.number_bathrooms {
 	width: 100px;
+	margin-top: 45px;
 }
 
 div.user {
-	width: 100px;
+	width: 100%;
+	text-align: left;
+
 }
 
 div.description {
-	width: 100px;
+	width: 100%;
+	text-align: left;
 }
-
