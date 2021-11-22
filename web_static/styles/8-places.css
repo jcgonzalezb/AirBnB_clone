@@ -1,3 +1,27 @@
+div.price_by_night {
+	color: #FF5A5F;
+	border: 4px solid #FF5A5F;
+	border-radius: 4px;
+	min-width: 60px;
+	height: 60px;
+	font-size: 30px;
+	vertical-align: top;
+	text-align: right;
+}
+
+div.information {
+	height: 80px;
+	border-top-style: 1px solid #DDDDDD;
+	border-bottom-style: 1px solid #DDDDDD;
+}
+
+div.max_guest{
+	width: 100px
+
+
+}
+
+
 section.places {
 	text-align: center;
 	margin: 20px;
