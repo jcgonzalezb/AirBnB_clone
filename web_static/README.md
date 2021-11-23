@@ -1,8 +1,9 @@
 # AirBnB clone - Web static
 
+## Description of the project
 
-
-
+In this project you can observe a page similar to AirBnB in which HTML and CSS languages
+were implemented. HTML is the structure of the page and CSS is the styling of your same.
 
 ## Description of the files and folders inside this folder:
 
@@ -26,7 +27,7 @@
 - OS: Ubuntu 20.04 LTS
 - Style guidelines: [W3C](https://github.com/holbertonschool/W3C-Validator)
 
-<p align="left"> <a href="https://www.cprogramming.com/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="c" width="40" height="40"/> </a> </p>
+<p align="left"> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> </p>
 
 
 ## Author
