@@ -1,17 +1,23 @@
-# 0x01. AirBnB clone - Web static
+# AirBnB clone - Web static
+
+
+
+
 
 ## Description of the files and folders inside this folder:
 
-- main_files: Folder with main programs to showcase sample function usage.
-- hash_tables.h: Header file with all function prototypes.
+- images: Folder with all images and icons used for this site.
+- styles: Folder with all CSS files used for this site.
 
 0. Write an HTML page that displays a header and a footer.
 1. Write an HTML page that displays a header and a footer by using the style tag in the head tag.
 2. Write an HTML page that displays a header and a footer by using CSS files.
 3. Write an HTML page that displays a header and a footer by using CSS files (image and icon included).
-4. function that retrieves a value associated with a key.
-5. function that prints a hash table.
-6. function that deletes a hash table.
+4. Write an HTML page that displays a header, footer and a filters box with a search button.
+5. Write an HTML page that displays a header, footer and a filters box (more filters).
+6. Write an HTML page that displays a header, footer and a filters box with dropdown.
+7. Write an HTML page that displays a header, footer, a filters box with dropdown and results.
+8. Write an HTML page that displays a header, a footer, a filter box (dropdown list) and the result of the search.
 
 
 ## Languages and Tools:
