@@ -5,10 +5,10 @@
 - main_files: Folder with main programs to showcase sample function usage.
 - hash_tables.h: Header file with all function prototypes.
 
-0. function that creates a hash table.
-1. function that implements the djb2 hash function algorithm.
-2. function that returns index of a key.
-3. function that adds an element to the hash table.
+0. Write an HTML page that displays a header and a footer.
+1. Write an HTML page that displays a header and a footer by using the style tag in the head tag.
+2. Write an HTML page that displays a header and a footer by using CSS files.
+3. Write an HTML page that displays a header and a footer by using CSS files (image and icon included).
 4. function that retrieves a value associated with a key.
 5. function that prints a hash table.
 6. function that deletes a hash table.
@@ -16,8 +16,9 @@
 
 ## Languages and Tools:
 
+- Languages: HTML, CSS
 - OS: Ubuntu 20.04 LTS
-- Style guidelines: [Betty style](https://github.com/holbertonschool/Betty/wiki)
+- Style guidelines: [W3C](https://github.com/holbertonschool/W3C-Validator)
 
 <p align="left"> <a href="https://www.cprogramming.com/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="c" width="40" height="40"/> </a> </p>
 
