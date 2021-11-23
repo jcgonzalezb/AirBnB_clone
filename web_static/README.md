@@ -26,7 +26,7 @@ were implemented. HTML is the structure of the page and CSS is the styling of yo
 - Languages: HTML, CSS
 - OS: Ubuntu 20.04 LTS
 - Style guidelines: [W3C](https://github.com/holbertonschool/W3C-Validator)
-- Preview: paste index.html link and run on: [http://htmlpreview.github.io/] (http://htmlpreview.github.io/)
+- Preview: paste index.html link and run on: (http://htmlpreview.github.io/)
 
 <p align="left"> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> </p>
 
