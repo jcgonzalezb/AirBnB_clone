@@ -5,7 +5,7 @@
 In this project you can observe a page similar to AirBnB in which HTML and CSS languages
 were implemented. HTML is the structure of the page and CSS is the styling of your same.
 
-[AirBnB](https://imgur.com/iyMgqLK)
+Here is a preview of the page: [AirBnB](https://imgur.com/iyMgqLK)
 
 ## Description of the files and folders inside this folder:
 
