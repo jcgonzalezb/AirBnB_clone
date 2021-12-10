@@ -190,3 +190,19 @@ class TestBaseModel(unittest.TestCase):
     def test_save(self):
         self.base1.save()
         self.assertNotEqual(self.base1.created_at, self.base1.updated_at)
+
+    def test_save(self):
+        """Test to check each update in the storage"""
+        bm1 = BaseModel()
+        self.assertTrue(hasattr(bm1, "updated_at"))
+        bm1.save()
+        self.assertTrue(hasattr(bm1, "updated_at"))
+        t_arg = {'id': 'b6a6e15c-c67d-4312-9a75-9d084935e579',
+                 'create_at': datetime(2017, 9, 28, 21, 5, 54, 119427),
+                 'updated_at': datetime(2017, 9, 28, 21, 5, 54, 119572),
+                 'name': 'bm1'}
+        bm2 = BaseModel(t_arg)
+        bm2.save()
+        last_time = bm2.updated_at
+        bm2.save()
+        self.assertNotEqual(last_time, bm2.updated_at)
