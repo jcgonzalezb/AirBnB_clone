@@ -146,20 +146,20 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(bm1_dict["updated_at"], str)
 
     def test_save(self):
-        """Test to check each update in the storage"""
-        bm1 = BaseModel()
-        self.assertTrue(hasattr(bm1, "updated_at"))
-        bm1.save()
-        self.assertTrue(hasattr(bm1, "updated_at"))
-        t_arg = {'id': 'b6a6e15c-c67d-4312-9a75-9d084935e579',
-                 'create_at': datetime(2017, 9, 28, 21, 5, 54, 119427),
-                 'updated_at': datetime(2017, 9, 28, 21, 5, 54, 119572),
-                 'name': 'bm1'}
-        bm2 = BaseModel(t_arg)
-        bm2.save()
-        last_time = bm2.updated_at
-        bm2.save()
-        self.assertNotEqual(last_time, bm2.updated_at)
+        """ Tests the save method """
+        obj = BaseModel()
+        time1 = obj.updated_at
+        obj.name = "Plankton"
+        obj.age = 88.32
+        obj.save()
+        time2 = obj.updated_at
+        dict_obj = storage.all()
+        obj_ref = storage.all().get("BaseModel.{}".format(obj.id))
+        self.assertNotEqual(time1, time2)
+        self.assertEqual(obj.id, obj_ref.id)
+        self.assertEqual(obj.name, obj_ref.name)
+        self.assertEqual(obj.age, obj_ref.age)
+        self.assertTrue(os.path.exists('file.json'))
 
     def test_init_from_dict(self):
         """test to check a new instance witk Kwargs"""
