@@ -186,3 +186,7 @@ class TestBaseModel(unittest.TestCase):
         model.save()
         created_2 = str(model.created_at)
         self.assertEqual(created_1, created_2)
+
+    def test_save(self):
+        self.base1.save()
+        self.assertNotEqual(self.base1.created_at, self.base1.updated_at)
