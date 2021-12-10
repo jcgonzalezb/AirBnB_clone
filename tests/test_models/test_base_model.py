@@ -66,10 +66,6 @@ class TestBaseModel(unittest.TestCase):
         )
         self.assertEqual(string, str(my_model))
 
-    def test_save(self):
-        self.base1.save()
-        self.assertNotEqual(self.base1.created_at, self.base1.updated_at)
-
     def test_to_dict(self):
         """
         Test to_dict method
@@ -169,3 +165,24 @@ class TestBaseModel(unittest.TestCase):
             bm1.created_at.isoformat(), '2017-09-28T21:03:54.052298')
         self.assertEqual(
             bm1.updated_at.isoformat(), '2017-09-28T21:03:54.052302')
+
+    def test_created_and_updated_at(self):
+        """
+        Checks if updated_t attribute changes when a new attribute is
+        added to the object and created_at is the same all the time.
+        """
+        # Checks that updated_at changes
+        model = BaseModel()
+        updated_1 = str(model.updated_at)
+        model.name = "Betty"
+        model.save()
+        updated_2 = str(model.updated_at)
+        self.assertNotEqual(updated_1, updated_2)
+
+        # Checks that created_at doesn't change
+        model = BaseModel()
+        created_1 = str(model.created_at)
+        model.last_name = "Holberton"
+        model.save()
+        created_2 = str(model.created_at)
+        self.assertEqual(created_1, created_2)
