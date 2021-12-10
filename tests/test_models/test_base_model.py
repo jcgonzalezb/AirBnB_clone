@@ -67,19 +67,19 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(string, str(my_model))
 
     def test_save(self):
-        """ Tests the save method """
-        object = BaseModel()
-        t1 = object.updated_at
-        object.name = "Betty"
-        object.age = 89
-        object.save()
-        t2 = object.updated_at
-        obj_ref = storage.all().get("BaseModel.{}".format(object.id))
-        self.assertNotEqual(t1, t2)
-        self.assertEqual(object.id, obj_ref.id)
-        self.assertEqual(object.name, obj_ref.name)
-        self.assertEqual(object.age, obj_ref.age)
-        self.assertTrue(os.path.exists('file.json'))
+        """
+        Test save method
+        """
+        my_model = BaseModel()
+        my_storage = FileStorage()
+        update = my_model.__dict__['updated_at']
+        self.assertFalse(path.isfile('file.json'))
+        my_model.save()
+        self.assertTrue(path.isfile('file.json'))
+        self.assertNotEqual(my_model.__dict__['updated_at'], update)
+        update = my_model.__dict__['updated_at']
+        my_storage.reload()
+        self.assertEqual(my_model.__dict__['updated_at'], update)
 
     def test_to_dict(self):
         """
