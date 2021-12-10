@@ -6,6 +6,7 @@ import unittest
 import json
 import os
 from datetime import datetime
+from unittest import mock
 from models import storage
 from models import base_model
 from models.engine.file_storage import FileStorage
@@ -206,3 +207,18 @@ class TestBaseModel(unittest.TestCase):
         last_time = bm2.updated_at
         bm2.save()
         self.assertNotEqual(last_time, bm2.updated_at)
+
+    @mock.patch("models.storage")
+    def test_save(self, mock_storage):
+        """
+            test save and update at is working and storage call
+            save
+        """
+        instance = BaseModel()
+        old_value_created = instance.created_at
+        old_value_update = instance.updated_at
+        instance.save()
+        new_value_created = instance.created_at
+        new_value_updated = instance.updated_at
+        self.assertNotEqual(old_value_update, new_value_updated)
+        self.assertEqual(old_value_created, new_value_created)
