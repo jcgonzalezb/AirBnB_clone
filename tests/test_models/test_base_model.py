@@ -222,3 +222,12 @@ class TestBaseModel(unittest.TestCase):
         new_value_updated = instance.updated_at
         self.assertNotEqual(old_value_update, new_value_updated)
         self.assertEqual(old_value_created, new_value_created)
+
+    def test_save(self):
+        """ Testing save """
+        i = self.value()
+        i.save()
+        key = self.name + "." + i.id
+        with open('file.json', 'r') as f:
+            j = json.load(f)
+            self.assertEqual(j[key], i.to_dict())
